@@ -33,7 +33,7 @@ A total of 4 representations were tested and compared:
 
 Additionally, we implemented two Temporal-Difference (TD) learning rules:
 1) TD(0)
-2) TD(&lambda;)
+2) TD(&lambda;) <br>
 -- Note: these scripts can also be used to implement TD(n), but this rule was not tested in the published study.
 
 ## Experiment
