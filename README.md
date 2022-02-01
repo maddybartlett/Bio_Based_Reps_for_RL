@@ -72,14 +72,20 @@ The parameters that were varied, and the values tested, were:
 | Lambda (eligibility trace discount) | 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99                        |
 | Number of Dimensions                | 64, 128, 256, 532                                                                       |
 
-
-
-
-
-
 ## Data Preprocessing:
 
+Running a single experiment will produce a large number of files which takes a while to load up. We therefore created the Data_PreProcessing script to collect all the data from each folder, and create smaller, more manageable dataframes containing the information necessary for the analysis. 
+*Note : preprocessing each folder of data may take a while
+
 ## Analysis:
+
+The analysis for this study was descriptive in nature. <br>
+The Analysis script creates plots showing the mean number of trials needed to reach the target rolling average reward of 0.95. <br>
+This mean number of trials was calculated for each testing value of each parameter that was varied. <br>
+The plots show the distribution of mean number of trials across all testing values for each of the 4 representations. 
+
+We also retrieved the parameter sets that resulted in the smallest mean number of trials to reach the target rolling average reward and present this information in a table along with the mean number of trials, and 95% confidence intervals for that mean. <br>
+*Note: the dimensions data has been excluded because there was little to no effect of varying this parameter (at least across the values we tested).
 
 ## Citation:
 
