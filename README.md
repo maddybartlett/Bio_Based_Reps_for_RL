@@ -34,7 +34,7 @@ A total of 4 representations were tested and compared:
 Additionally, we implemented two Temporal-Difference (TD) learning rules:
 1) TD(0)
 2) TD(&lambda;) <br>
--- Note: these scripts can also be used to implement TD(n), but this rule was not tested in the published study.
+*Note: these scripts can also be used to implement TD(n), but this rule was not tested in the published study.*
 
 ## Experiment:
 
@@ -75,7 +75,7 @@ The parameters that were varied, and the values tested, were:
 ## Data Preprocessing:
 
 Running a single experiment will produce a large number of files which takes a while to load up. We therefore created the Data_PreProcessing script to collect all the data from each folder, and create smaller, more manageable dataframes containing the information necessary for the analysis. 
-*Note : preprocessing each folder of data may take a while
+*Note : preprocessing each folder of data may take a while*
 
 ## Analysis:
 
@@ -85,7 +85,7 @@ This mean number of trials was calculated for each testing value of each paramet
 The plots show the distribution of mean number of trials across all testing values for each of the 4 representations. 
 
 We also retrieved the parameter sets that resulted in the smallest mean number of trials to reach the target rolling average reward and present this information in a table along with the mean number of trials, and 95% confidence intervals for that mean. <br>
-*Note: the dimensions data has been excluded because there was little to no effect of varying this parameter (at least across the values we tested).
+*Note: the dimensions data has been excluded because there was little to no effect of varying this parameter (at least across the values we tested).*
 
 ## Citation:
 
