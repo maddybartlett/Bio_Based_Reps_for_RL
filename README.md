@@ -38,6 +38,71 @@ Additionally, we implemented two Temporal-Difference (TD) learning rules:
 
 ## Experiment:
 
+Before running any experiments we first identified a working parameter set for each configuration -- a set of parameters that resulted in the network solving the task in at least 2 out of 5 runs.
+The chosen parameter sets that came out of this were:
+
+<pre>
+| Environment | Rule          | rep                                       | runs | steps | alpha | beta | gamma | n_neurons| sparsity | lambda | sample_encoders | dims |
+| ----------- | ------------- | ----------------------------------------- | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| MiniGrid    | TD(0)         | OneHotRep((8,8,4))                        | 500  | 200   | 0.5   | 0.9  | 0.95  | None     | None     | None   | False           | None |
+| MiniGrid    | TD(0)         | OneHotRep((8,8,4))                        | 1000 | 200   | 0.5   | 0.8  | 0.8   | 3000     | 0.1      | None   | False           | None |
+| MiniGrid    | TD(0)         | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.5   | 0.6  | 0.7   | None     | None     | None   | False           | 256  |
+| MiniGrid    | TD(0)         | SSPRep(N=3, D=128, scale=[0.75,0.75,1.0]) | 300  | 200   | 0.5   | 0.6  | 0.8   | 3000     | 0.25     | None   | False           | 128  |
+| MiniGrid    | TD(0)         | GridSSPRep(3)                             | 300  | 200   | 0.1   | 0.85 | 0.95  | None     | None     | None   | False           | None |
+| MiniGrid    | TD(0)         | GridSSPRep(3)                             | 300  | 200   | 0.1   | 0.85 | 0.95  | 1000     | 0.1      | None   | False           | None |
+| ----------- | ------------- | ----------------------------------------- | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| MiniGrid    | TD($\lambda$) | OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.9  | 0.95  | None     | None     | 0.9    | False           | None |
+| MiniGrid    | TD($\lambda$) | OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.85 | 0.85  | 2000     | 0.005    | 0.8    | False           | None |
+| MiniGrid    | TD($\lambda$) | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.1   | 0.9  | 0.7   | None     | None     | 0.5    | False           | 256  |
+| MiniGrid    | TD($\lambda$) | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.1   | 0.9  | 0.7   | 5000     | 0.2      | 0.5    | False           | 256  |
+| MiniGrid    | TD($\lambda$) | GridSSPRep(3)                             | 50   | 200   | 0.1   | 0.85 | 0.95  | None     | None     | 0.9    | False           | None |
+| MiniGrid    | TD($\lambda$) | GridSSPRep(3)                             | 50   | 200   | 0.1   | 0.85 | 0.95  | 2000     | 0.2      | 0.9    | False           | None |
+| ----------- | ------------- | ----------------------------------------- | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+</pre>
+
+We then conducted a parameter survey where we varied these parameters over a wide range of values, varying one parameter at a time. 
+
+The parameters that were varied, and the values tested, were:
+
+<pre>
+| Parameter                           | Testing Values                                                                          |
+| ----------------------------------- | --------------------------------------------------------------------------------------- |
+| Alpha (learning rate)               | 0.0001, 0.001, 0.01, 0.05, 0.1, 0.5, 0.75, 0.9, 0.95, 0.99, 1.0                         |
+| Beta (action-value discount)        | 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99                        |
+| Gamma (state-value discount)        | 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99                        |
+| Number of Neurons                   | 10, 100, 500, 1000, 1500, 2000, 2500, 3000, 5000                                        |
+| Sparsity                            | 0.001, 0.005, 0.01, 0.05, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99 |
+| Lambda (eligibility trace discount) | 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99                        |
+| Number of Dimensions                | 64, 128, 256, 532                                                                       |
+
+
+</pre>
+
+%\begin{table*}
+%\centering
+%    \caption {Table reporting the values tested during the sensitivity analysis experiments for each testing parameter.}
+%    \label{param_table}
+%     \renewcommand\arraystretch{1}
+%     \begin{tabular}{ll}
+%     \toprule
+%     Parameter & Testing Values \\ [0.5ex] 
+%      \midrule
+%     Learning rate $\alpha$ &  0.0001, 0.001, 0.01, 0.05, 0.1, 0.5, 0.75, 0.9, 0.95, 0.99, 1.0 \\ 
+%     Action Value discount $\beta$ & 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99 \\ 
+%     State Value discount $\gamma$ & 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99 \\ 
+%     Number of Neurons & 10, 100, 500, 1000, 1500, 2000, 2500, 3000, 5000 \\
+%     Sparsity & 0.001, 0.005, 0.01, 0.05, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.99\\
+%     Number of Dimensions (for SSP rep) & 64, 128, 256, 532 \\
+     %n (for TD(n)) & 2, 3, 4, 5, 6, 7, 8, 9, 10 \\
+%     Eligibility Trace discount $\lambda$ (for TD($\lambda$)) & 0.01, 0.1, 0.25, 0.5, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.99 \\
+%    \bottomrule
+%    \end{tabular}
+%\end{table*} 
+
+
+
+
+
 ## Data Preprocessing:
 
 ## Analysis:
