@@ -42,21 +42,21 @@ Before running any experiments we first identified a working parameter set for e
 The chosen parameter sets that came out of this were:
 
 | Environment | Rule          | rep                                       | runs | steps | alpha | beta | gamma | n_neurons| sparsity | lambda | sample_encoders | dims |
-| ----------- | ------------- | ----------------------------------------- | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| ----------- | ------------- | ---------------------                     | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
 | MiniGrid    | TD(0)         | OneHotRep((8,8,4))                        | 500  | 200   | 0.5   | 0.9  | 0.95  | None     | None     | None   | False           | None |
 | MiniGrid    | TD(0)         | OneHotRep((8,8,4))                        | 1000 | 200   | 0.5   | 0.8  | 0.8   | 3000     | 0.1      | None   | False           | None |
 | MiniGrid    | TD(0)         | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.5   | 0.6  | 0.7   | None     | None     | None   | False           | 256  |
 | MiniGrid    | TD(0)         | SSPRep(N=3, D=128, scale=[0.75,0.75,1.0]) | 300  | 200   | 0.5   | 0.6  | 0.8   | 3000     | 0.25     | None   | False           | 128  |
 | MiniGrid    | TD(0)         | GridSSPRep(3)                             | 300  | 200   | 0.1   | 0.85 | 0.95  | None     | None     | None   | False           | None |
 | MiniGrid    | TD(0)         | GridSSPRep(3)                             | 300  | 200   | 0.1   | 0.85 | 0.95  | 1000     | 0.1      | None   | False           | None |
-| ----------- | ------------- | ----------------------------------------- | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| ----------- | ------------- | ---------------------                     | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
 | MiniGrid    | TD($\lambda$) | OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.9  | 0.95  | None     | None     | 0.9    | False           | None |
 | MiniGrid    | TD($\lambda$) | OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.85 | 0.85  | 2000     | 0.005    | 0.8    | False           | None |
 | MiniGrid    | TD($\lambda$) | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.1   | 0.9  | 0.7   | None     | None     | 0.5    | False           | 256  |
 | MiniGrid    | TD($\lambda$) | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.1   | 0.9  | 0.7   | 5000     | 0.2      | 0.5    | False           | 256  |
 | MiniGrid    | TD($\lambda$) | GridSSPRep(3)                             | 50   | 200   | 0.1   | 0.85 | 0.95  | None     | None     | 0.9    | False           | None |
 | MiniGrid    | TD($\lambda$) | GridSSPRep(3)                             | 50   | 200   | 0.1   | 0.85 | 0.95  | 2000     | 0.2      | 0.9    | False           | None |
-| ----------- | ------------- | ----------------------------------------- | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| ----------- | ------------- | ---------------------                     | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
 
 We then conducted a parameter survey where we varied these parameters over a wide range of values, varying one parameter at a time. 
 
