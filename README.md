@@ -1,4 +1,8 @@
 # Bio_Based_Reps_for_RL
+
+Contributors: Dr. M. Bartlett, Dr. T. Stewart & Dr. J. Orchard <br>
+Affiliation: University of Waterloo, ON, Canada
+
 Repository to accompany Bartlett, Stewart & Orchard (2022) "Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning" CogSci Paper (LINK).
 
 ## Requirements:
@@ -29,7 +33,7 @@ A total of 4 representations were tested and compared:
 
 Additionally, we implemented two Temporal-Difference (TD) learning rules:
 1) TD(0)
-2) TD(&lambda)
+2) TD(&lambda;)
 -- Note: these scripts can also be used to implement TD(n), but this rule was not tested in the published study.
 
 ## Experiment
