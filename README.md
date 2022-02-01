@@ -48,10 +48,10 @@ Paper:
 
 <pre>
 citation
-<\pre>
+</pre>
 
 Repository:
 
 <pre>
 citation
-<\pre>
+</pre>
