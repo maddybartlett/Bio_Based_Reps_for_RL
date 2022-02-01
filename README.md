@@ -75,8 +75,8 @@ Running a single experiment will produce a large number of files which takes a w
 
 ## Analysis:
 
-The analysis for this study was descriptive in nature. <br>
-The Analysis script creates plots showing the mean number of trials needed to reach the target rolling average reward of 0.95. <br>
+The analysis for this study was descriptive in nature. 
+The Analysis script creates plots showing the mean number of trials needed to reach the target rolling average reward of 0.95. 
 This mean number of trials was calculated for each testing value of each parameter that was varied. <br>
 The plots show the distribution of mean number of trials across all testing values for each of the 4 representations. 
 
