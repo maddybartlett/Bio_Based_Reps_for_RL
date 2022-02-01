@@ -44,7 +44,7 @@ Additionally, we implemented two Temporal-Difference (TD) learning rules:
 
 ## Citation:
 
-Paper:
+Please use this bibtex to reference the paper: 
 
 <pre>
 <!-- @inproceedings{bartlett2022_RL,
