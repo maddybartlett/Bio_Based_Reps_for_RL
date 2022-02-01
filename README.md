@@ -74,7 +74,7 @@ The parameters that were varied, and the values tested, were:
 
 ## Data Preprocessing:
 
-Running a single experiment will produce a large number of files which takes a while to load up. We therefore created the Data_PreProcessing script to collect all the data from each folder, and create smaller, more manageable dataframes containing the information necessary for the analysis. 
+Running a single experiment will produce a large number of files which takes a while to load up. We therefore created the Data_PreProcessing script to collect all the data from each folder, and create smaller, more manageable dataframes containing the information necessary for the analysis. <br>
 *Note : preprocessing each folder of data may take a while*
 
 ## Analysis:
