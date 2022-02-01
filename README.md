@@ -47,11 +47,11 @@ Additionally, we implemented two Temporal-Difference (TD) learning rules:
 Paper:
 
 <pre>
-[//]: # (@inproceedings{bartlett2022_RL,
-  author = {Bartlett, Madeleine and Stewart, Terrence C and Orchard, Jeff},
-  title = {Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning},
-  year = {2022},
-  booktitle={44th Annual Conference of the Cognitive Science Society (CogSci 2022)},
-})
+# @inproceedings{bartlett2022_RL,
+#  author = {Bartlett, Madeleine and Stewart, Terrence C and Orchard, Jeff},
+#  title = {Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning},
+#  year = {2022},
+#  booktitle={44th Annual Conference of the Cognitive Science Society (CogSci 2022)},
+# }
 </pre>
 
