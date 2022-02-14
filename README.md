@@ -7,6 +7,8 @@ Repository to accompany Bartlett, Stewart & Orchard (2022) "Biologically-Based N
 
 ## Requirements:
 
+You will need to have Jupyter Notebook installed in order to run these scripts. Recommended to install [Anaconda](https://www.anaconda.com/products/individual). 
+
 * Python 3.5+
 * OpenAI Gym
 * Gym MiniGrid
@@ -41,18 +43,18 @@ Additionally, we implemented two Temporal-Difference (TD) learning rules:
 Before running any experiments we first identified a working parameter set for each configuration -- a set of parameters that resulted in the network solving the task in at least 2 out of 5 runs.
 The chosen parameter sets that came out of this were:
 
-| Environment | Rule          | rep                                       | runs | steps | alpha | beta | gamma | n_neurons| sparsity | lambda | sample_encoders | dims |
-| ----------- | ------------- | ---------------------                     | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
-| MiniGrid    | TD(0)         | OneHotRep((8,8,4))                        | 500  | 200   | 0.5   | 0.9  | 0.95  | None     | None     | None   | False           | None |
-| MiniGrid    | TD(0)         | OneHotRep((8,8,4))                        | 1000 | 200   | 0.5   | 0.8  | 0.8   | 3000     | 0.1      | None   | False           | None |
-| MiniGrid    | TD(0)         | SSPRep(N=3, D=128, scale=[0.75,0.75,1.0]) | 300  | 200   | 0.5   | 0.6  | 0.8   | 3000     | 0.25     | None   | False           | 128  |
-| MiniGrid    | TD(0)         | GridSSPRep(3)                             | 300  | 200   | 0.1   | 0.85 | 0.95  | 1000     | 0.1      | None   | False           | None |
-| ----------- | ------------- | ---------------------                     | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
-| MiniGrid    | TD($\lambda$) | OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.9  | 0.95  | None     | None     | 0.9    | False           | None |
-| MiniGrid    | TD($\lambda$) | OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.85 | 0.85  | 2000     | 0.005    | 0.8    | False           | None |
-| MiniGrid    | TD($\lambda$) | SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.1   | 0.9  | 0.7   | 5000     | 0.2      | 0.5    | False           | 256  |
-| MiniGrid    | TD($\lambda$) | GridSSPRep(3)                             | 50   | 200   | 0.1   | 0.85 | 0.95  | 2000     | 0.2      | 0.9    | False           | None |
-| ----------- | ------------- | ---------------------                     | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| Environment | Rule                     | rep                                          | runs | steps | alpha | beta | gamma | n_neurons| sparsity | lambda | sample_encoders | dims |
+| ----------- | -------------            | ---------------------                        | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| MiniGrid    | rule.ActorCriticTD(0)    | rp.OneHotRep((8,8,4))                        | 500  | 200   | 0.5   | 0.9  | 0.95  | None     | None     | None   | False           | None |
+| MiniGrid    | rule.ActorCriticTD(0)    | rp.OneHotRep((8,8,4))                        | 1000 | 200   | 0.5   | 0.8  | 0.8   | 3000     | 0.1      | None   | False           | None |
+| MiniGrid    | rule.ActorCriticTD(0)    | rp.SSPRep(N=3, D=128, scale=[0.75,0.75,1.0]) | 300  | 200   | 0.5   | 0.6  | 0.8   | 3000     | 0.25     | None   | False           | 128  |
+| MiniGrid    | rule.ActorCriticTD(0)    | rp.GridSSPRep(3)                             | 300  | 200   | 0.1   | 0.85 | 0.95  | 1000     | 0.1      | None   | False           | None |
+| ----------- | -------------            | ---------------------                        | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
+| MiniGrid    | rule.ActorCriticTDLambda | rp.OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.9  | 0.95  | None     | None     | 0.9    | False           | None |
+| MiniGrid    | rule.ActorCriticTDLambda | rp.OneHotRep((8,8,4))                        | 300  | 200   | 0.1   | 0.85 | 0.85  | 2000     | 0.005    | 0.8    | False           | None |
+| MiniGrid    | rule.ActorCriticTDLambda | rp.SSPRep(N=3, D=256, scale=[0.75,0.75,1.0]) | 500  | 200   | 0.1   | 0.9  | 0.7   | 5000     | 0.2      | 0.5    | False           | 256  |
+| MiniGrid    | rule.ActorCriticTDLambda | rp.GridSSPRep(3)                             | 50   | 200   | 0.1   | 0.85 | 0.95  | 2000     | 0.2      | 0.9    | False           | None |
+| ----------- | -------------            | ---------------------                        | ---- | ----- | ----- | ---- | ----- | -------- | -------- | ------ | --------------- | ---- |
 
 We then conducted a parameter survey where we varied these parameters over a wide range of values, varying one parameter at a time. 
 
@@ -82,6 +84,66 @@ The plots show the distribution of mean number of trials across all testing valu
 
 We also retrieved the parameter sets that resulted in the smallest mean number of trials to reach the target rolling average reward and present this information in a table along with the mean number of trials, and 95% confidence intervals for that mean. <br>
 *Note: the dimensions data has been excluded because there was little to no effect of varying this parameter (at least across the values we tested).*
+
+## Instructions to Replicate:
+
+Download repository as a zip file or clone repository by clicking the "Code" button on the top right. <br>
+
+### Experiment:
+
+In order to replicate the experiment, open the "Experiment.ipynb" file in Jupyter Notebook. <br>
+Things to change: <br>
+* Path to the data folder where you want the data to be saved (call 2)
+
+To run an experiment:
+1) Set the path to the data folder where you want the data to be saved (cell 2) -- we recommend using the same forumlaic folder-names as used in the original study to avoid complications with loading the data in the other scripts. Folder-name formula is outlined below.
+2) Set the parameters in cell 3 -- these can be copied from the table above 
+3) Set 'variable' to the list of values relevant to the parameter to-be-tested
+4) Replace the numerical value for the to-be-tested parameter with 'v' (e.g. alpha = v)3
+5) Run the notebook
+6) Repeat for each parameter
+
+Path to Data:
+
+We recommend setting the data_folder path to: Path('../DATA_FOLDER/'task_rule_rep_hidden_param)
+
+where:
+* DATA_FOLDER = the parent folder where you want everything to be saved. Set this to whatever you want
+* task = the task being learned:
+    * 'MG' for MiniGrid
+* rule = the rule used:
+    * 'TD0' for TD(0)
+    * 'TDLam' for TD($\lambda$)
+* rep = the representation used:
+    * '1H' for one hot
+    * 'SSP' for SSP
+    * 'Grid' for grid cells
+* param = the parameter that was tested/varied:
+    * 'alpha'
+    * 'beta'
+    * 'gamma'
+    * 'lambda'
+    * 'neurons'
+    * 'sparsity'
+    * 'dims'
+* hidden = whether or not the hidden layer contained neurons:
+    * 'nn' for no neurons
+    * 'n' for with neurons
+
+### Data Preprocessing:
+
+After replicating the experiment you will need to trim the data and save it into a dataframe before performing analyses. <br>
+Go into the get_data function in cell 4 and change the data_folder to your path (i.e. change the parent folder 'WAT002_RL_Data' to your parent folder). <br>
+Also change the path where the new data files will be saved ('data.to_pickle ... '). <br>
+
+Beyond these first 4 cells, there is one cell for each experiment. Run the relevant cells for trimmming the data that you have. 
+
+*Note: the trimming process can take a while so we recommend trimming the data for one experiment at a time, rather than running the full script.
+    
+### Analysis:
+
+If you have run your own experiments, 
+
 
 ## Citation:
 
