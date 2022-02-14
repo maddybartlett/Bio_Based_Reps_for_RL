@@ -142,7 +142,10 @@ Beyond these first 4 cells, there is one cell for each experiment. Run the relev
     
 ### Analysis:
 
-If you have run your own experiments, 
+If you have run your own experiments, change data_folder path if required (cell 8).
+
+Run script. <br>
+If you want to save the figures, uncomment the relevant lines and change the location and filename (optional).
 
 
 ## Citation:
