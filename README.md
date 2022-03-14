@@ -22,7 +22,75 @@ You will need to have Jupyter Notebook installed in order to run these scripts. 
 * Pathlib
 * Math
 
-## Overview:
+## Scripts and How-To Guide:
+
+Download repository as a zip file or clone repository by clicking the "Code" button on the top right. <br>
+
+### Run the Network
+
+You can use the runme.py script to run the network from the command line. 
+The Actor-Critic Network will try to solve the MiniGrid task using the TD(0) learning rule.
+
+### Experiment:
+
+In order to replicate the experiment, open the "Experiment.ipynb" file in Jupyter Notebook. <br>
+Things to change: <br>
+* Path to the data folder where you want the data to be saved (call 2)
+
+To run an experiment:
+1) Set the path to the data folder where you want the data to be saved (cell 2) -- we recommend using the same forumlaic folder-names as used in the original study to avoid complications with loading the data in the other scripts. Folder-name formula is outlined below.
+2) Set the parameters in cell 3 -- these can be copied from the table above 
+3) Set 'variable' to the list of values relevant to the parameter to-be-tested
+4) Replace the numerical value for the to-be-tested parameter with 'v' (e.g. alpha = v)3
+5) Run the notebook
+6) Repeat for each parameter
+
+Path to Data:
+
+We recommend setting the data_folder path to: Path('../DATA_FOLDER/'task_rule_rep_hidden_param)
+
+where:
+* DATA_FOLDER = the parent folder where you want everything to be saved. Set this to whatever you want
+* task = the task being learned:
+    * 'MG' for MiniGrid
+* rule = the rule used:
+    * 'TD0' for TD(0)
+    * 'TDLam' for TD($\lambda$)
+* rep = the representation used:
+    * '1H' for one hot
+    * 'SSP' for SSP
+    * 'Grid' for grid cells
+* param = the parameter that was tested/varied:
+    * 'alpha'
+    * 'beta'
+    * 'gamma'
+    * 'lambda'
+    * 'neurons'
+    * 'sparsity'
+    * 'dims'
+* hidden = whether or not the hidden layer contained neurons:
+    * 'nn' for no neurons
+    * 'n' for with neurons
+
+### Data Preprocessing:
+
+After replicating the experiment you will need to trim the data and save it into a dataframe before performing analyses. <br>
+Go into the get_data function in cell 4 and change the data_folder to your path (i.e. change the parent folder 'WAT002_RL_Data' to your parent folder). <br>
+Also change the path where the new data files will be saved ('data.to_pickle ... '). <br>
+
+Beyond these first 4 cells, there is one cell for each experiment. Run the relevant cells for trimmming the data that you have. 
+
+*Note: the trimming process can take a while so we recommend trimming the data for one experiment at a time, rather than running the full script.
+    
+### Analysis:
+
+If you have run your own experiments, change data_folder path if required (cell 8).
+
+Run script. <br>
+If you want to save the figures, uncomment the relevant lines and change the location and filename (optional).
+
+
+## Study Overview:
 
 This study explored the effect of using different methods of representing the state on the performance of a Temporal Difference-based Actor-Critic network on solving the MiniGrid Reinforcement Learning task. 
 Specifically, it examines whether performance when using biologically-inspired representations (Spatial Semantic Pointers and grid cells) differs from performance when using one-hot representations. 
@@ -84,68 +152,6 @@ The plots show the distribution of mean number of trials across all testing valu
 
 We also retrieved the parameter sets that resulted in the smallest mean number of trials to reach the target rolling average reward and present this information in a table along with the mean number of trials, and 95% confidence intervals for that mean. <br>
 *Note: the dimensions data has been excluded because there was little to no effect of varying this parameter (at least across the values we tested).*
-
-## Instructions to Replicate:
-
-Download repository as a zip file or clone repository by clicking the "Code" button on the top right. <br>
-
-### Experiment:
-
-In order to replicate the experiment, open the "Experiment.ipynb" file in Jupyter Notebook. <br>
-Things to change: <br>
-* Path to the data folder where you want the data to be saved (call 2)
-
-To run an experiment:
-1) Set the path to the data folder where you want the data to be saved (cell 2) -- we recommend using the same forumlaic folder-names as used in the original study to avoid complications with loading the data in the other scripts. Folder-name formula is outlined below.
-2) Set the parameters in cell 3 -- these can be copied from the table above 
-3) Set 'variable' to the list of values relevant to the parameter to-be-tested
-4) Replace the numerical value for the to-be-tested parameter with 'v' (e.g. alpha = v)3
-5) Run the notebook
-6) Repeat for each parameter
-
-Path to Data:
-
-We recommend setting the data_folder path to: Path('../DATA_FOLDER/'task_rule_rep_hidden_param)
-
-where:
-* DATA_FOLDER = the parent folder where you want everything to be saved. Set this to whatever you want
-* task = the task being learned:
-    * 'MG' for MiniGrid
-* rule = the rule used:
-    * 'TD0' for TD(0)
-    * 'TDLam' for TD($\lambda$)
-* rep = the representation used:
-    * '1H' for one hot
-    * 'SSP' for SSP
-    * 'Grid' for grid cells
-* param = the parameter that was tested/varied:
-    * 'alpha'
-    * 'beta'
-    * 'gamma'
-    * 'lambda'
-    * 'neurons'
-    * 'sparsity'
-    * 'dims'
-* hidden = whether or not the hidden layer contained neurons:
-    * 'nn' for no neurons
-    * 'n' for with neurons
-
-### Data Preprocessing:
-
-After replicating the experiment you will need to trim the data and save it into a dataframe before performing analyses. <br>
-Go into the get_data function in cell 4 and change the data_folder to your path (i.e. change the parent folder 'WAT002_RL_Data' to your parent folder). <br>
-Also change the path where the new data files will be saved ('data.to_pickle ... '). <br>
-
-Beyond these first 4 cells, there is one cell for each experiment. Run the relevant cells for trimmming the data that you have. 
-
-*Note: the trimming process can take a while so we recommend trimming the data for one experiment at a time, rather than running the full script.
-    
-### Analysis:
-
-If you have run your own experiments, change data_folder path if required (cell 8).
-
-Run script. <br>
-If you want to save the figures, uncomment the relevant lines and change the location and filename (optional).
 
 
 ## Citation:
