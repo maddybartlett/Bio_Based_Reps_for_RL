@@ -29,7 +29,10 @@ Download repository as a zip file or clone repository by clicking the "Code" but
 ### Run the Network
 
 You can use the runme.py script to run the network from the command line. 
-The Actor-Critic Network will try to solve the MiniGrid task using the TD(0) learning rule.
+When running this script, the Actor-Critic Network will try to solve the MiniGrid task using the TD(0) learning rule. 
+This learning task will be repeated 5 times.
+Plots showing the total reward received in each learning trial of an experiment will be saved as run{i}plot.pdf. 
+Plots comparing the actual value of each state visited in the last learning trial of an experiment with the ideal value will be saved as ideal_value_plot{i}.pdf. 
 
 ### Experiment:
 
