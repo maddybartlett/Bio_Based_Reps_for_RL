@@ -3,7 +3,7 @@
 Contributors: Dr. M. Bartlett, Dr. T. Stewart & Dr. J. Orchard <br>
 Affiliation: University of Waterloo, ON, Canada
 
-Repository to accompany Bartlett, Stewart & Orchard (2022) "Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning" CogSci Paper (LINK).
+Repository to accompany Bartlett, Stewart & Orchard (2022) "Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning" CogSci [Paper](https://escholarship.org/uc/item/49v0x3rz).
 
 ## Requirements:
 
@@ -162,11 +162,11 @@ We also retrieved the parameter sets that resulted in the smallest mean number o
 Please use this bibtex to reference the paper: 
 
 <pre>
-<-- @inproceedings{bartlett2022biologically,
+@inproceedings{bartlett2022biologically,
   title={Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning},
   author={Bartlett, Madeleine and Stewart, Terrence C and Orchard, Jeff},
   booktitle={Proceedings of the Annual Meeting of the Cognitive Science Society},
   year={2022}
-} -->
+} 
 </pre>
 
