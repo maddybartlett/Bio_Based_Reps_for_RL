@@ -162,11 +162,11 @@ We also retrieved the parameter sets that resulted in the smallest mean number o
 Please use this bibtex to reference the paper: 
 
 <pre>
-<!-- @inproceedings{bartlett2022_RL,
-  author = {Bartlett, Madeleine and Stewart, Terrence C and Orchard, Jeff},
-  title = {Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning},
-  year = {2022},
-  booktitle={44th Annual Conference of the Cognitive Science Society (CogSci 2022)},
- } -->
+<-- @inproceedings{bartlett2022biologically,
+  title={Biologically-Based Neural Representations Enable Fast Online Shallow Reinforcement Learning},
+  author={Bartlett, Madeleine and Stewart, Terrence C and Orchard, Jeff},
+  booktitle={Proceedings of the Annual Meeting of the Cognitive Science Society},
+  year={2022}
+} -->
 </pre>
 
